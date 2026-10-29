@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
   "name": "X 评论助手",
-  "description": "点击 X 帖子的回复按钮，生成有内容、有分寸的评论，一键复制后自行粘贴。",
-  "version": "1.0.5",
+  "description": "生成 X 评论、挑选热点图文，或采集本人帖子与互动数据用于分析。",
+  "version": "1.1.0",
   "minimum_chrome_version": "116",
-  "permissions": ["storage", "sidePanel", "clipboardWrite"],
-  "host_permissions": ["https://x.com/*", "https://twitter.com/*"],
-  "optional_host_permissions": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*"],
+  "permissions": ["storage", "sidePanel", "clipboardWrite", "alarms"],
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*", "http://127.0.0.1/*", "http://localhost/*"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
   "background": { "service_worker": "background.js", "type": "module" },
   "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
   "action": { "default_title": "打开 X 评论助手", "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" } },
@@ -14,7 +14,7 @@
   "options_ui": { "page": "options.html", "open_in_tab": true },
   "content_scripts": [{
     "matches": ["https://x.com/*", "https://twitter.com/*"],
-    "js": ["content.js"],
+    "js": ["content.js", "following-content.js", "analytics-content.js"],
     "run_at": "document_idle"
   }]
 }

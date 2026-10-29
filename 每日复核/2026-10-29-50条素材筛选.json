@@ -1,0 +1,955 @@
+{
+  "method": "按原包五维权重初筛；50条为线索，不等于50条事实均已核实；原创观点的分数评估不包含对原故事真实性的背书",
+  "candidates": [
+    {
+      "id": 1,
+      "topic": "中国人出圈画面",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/gaochao17lngs/status/2115325623484981371",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 2,
+      "topic": "上海美男画面",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/DISONYYDS/status/2115307573809459242",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 3,
+      "topic": "安卓运行iOS线索",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/op7418/status/2115357210457100743",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 5,
+        "理解门槛低": 4,
+        "传播意愿": 4,
+        "可信可用": 3,
+        "讨论潜力": 4
+      },
+      "weightedScore": 4.1,
+      "status": "入选：事实稿",
+      "reason": "开发者README已读取；弃用未经核实的小米15机型说法，仅按Hakios项目自述写POCO研究演示",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 4,
+      "topic": "特斯拉人工动作采集",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/_FORAB/status/2115320757291229686",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 5,
+        "理解门槛低": 5,
+        "传播意愿": 4,
+        "可信可用": 5,
+        "讨论潜力": 4
+      },
+      "weightedScore": 4.7,
+      "status": "入选：事实稿",
+      "reason": "官方招聘页及职位说明核对；不写未核实薪酬或首次招聘日期",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 5,
+      "topic": "妈妈优先级聊天截图",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/rococo90933671/status/2115477132122153234",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 6,
+      "topic": "一切消失语境不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/zuoyeben/status/2115457112369402100",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 7,
+      "topic": "Tibo与poteto关系猜测",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/xiangning0/status/2115302216185901315",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "私人关系猜测，未证实不采用",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 8,
+      "topic": "人民币各国购买力对比",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/Kai866/status/2115312790676333037",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "不同国家价格与汇率缺同口径核验",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 9,
+      "topic": "开源辩解语境不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/pengchujin/status/2115267510161584260",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 10,
+      "topic": "占便宜与偷窃指控",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/MiaoHype/status/2115316631148601568",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 11,
+      "topic": "直男关系画面",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/0xphoenix00/status/2115471584588955855",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 12,
+      "topic": "京东境外eSIM线索",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/lild88080/status/2115279637437952148",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 13,
+      "topic": "酒店隔音与凌晨吵闹",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/XiaoJi0403/status/2115444525032505833",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 3,
+        "理解门槛低": 5,
+        "传播意愿": 4,
+        "可信可用": 5,
+        "讨论潜力": 4
+      },
+      "weightedScore": 4.1,
+      "status": "入选：原创观点",
+      "reason": "转为原创酒店隔音观点，不将博主个人遭遇当已验证新闻",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 14,
+      "topic": "江祖平法律争议",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/didengshengwu/status/2115310676646494711",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "法律争议缺一手案卷，不采用",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 15,
+      "topic": "赴日打工人物经历",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/XiaoJi0403/status/2115292478299336895",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 16,
+      "topic": "FrontierCode基准排行",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/NFT_Chen/status/2115310153444856187",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 17,
+      "topic": "印度富豪住宅",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/chakmillion/status/2115277624905781357",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 18,
+      "topic": "共享Apple账号隐私",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/abskoop/status/2115291317089780210",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 4,
+        "理解门槛低": 5,
+        "传播意愿": 4,
+        "可信可用": 5,
+        "讨论潜力": 5
+      },
+      "weightedScore": 4.5,
+      "status": "入选：事实稿",
+      "reason": "原帖已读取；用Apple官方共享账户建议替代未核实的泄露故事",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 19,
+      "topic": "火山前求婚视频",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/YOLOswc2y3/status/2115278029455048792",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 5,
+        "理解门槛低": 5,
+        "传播意愿": 4,
+        "可信可用": 1,
+        "讨论潜力": 4
+      },
+      "weightedScore": 3.9,
+      "status": "保留待核实",
+      "reason": "求婚视频至少2026年8月已流传，缺原作者时间地点及视频许可",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 20,
+      "topic": "射雕片场旧画面",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/hotmailfromsh/status/2115423889367162933",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 21,
+      "topic": "AA智力指数v5排行",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/leo114119/status/2115267421825286358",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 22,
+      "topic": "Tibo梗语境不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/0xlangeai/status/2115313586105192884",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 23,
+      "topic": "央视与皇马回应说法",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/_FORAB/status/2115324385469067694",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 24,
+      "topic": "喝水与洗杯子吐槽",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/DISONYYDS/status/2115410751900807470",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 4,
+        "理解门槛低": 5,
+        "传播意愿": 4,
+        "可信可用": 5,
+        "讨论潜力": 3
+      },
+      "weightedScore": 4.3,
+      "status": "入选：原创观点",
+      "reason": "转为原创洗杯子吐槽；不复述截图、不假造经历",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 25,
+      "topic": "电诈人物指控",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/yibingsg/status/2115273178075541991",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "涉及具体人员犯罪指控，未核实不采用",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 26,
+      "topic": "手滑灾难画面",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/yisvin/status/2115266779194798080",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 27,
+      "topic": "县域经济观点",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/laurencemister/status/2115275996572303824",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 28,
+      "topic": "模型全文转载与版权争议",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/mranti/status/2115308180783968684",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 29,
+      "topic": "人生容错率观点",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/waffsdzainop/status/2115318546557497724",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 30,
+      "topic": "秘书鸟与黑背豺视频",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/HGDA777/status/2115404311375011956",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 5,
+        "理解门槛低": 4,
+        "传播意愿": 4,
+        "可信可用": 1,
+        "讨论潜力": 3
+      },
+      "weightedScore": 3.6,
+      "status": "保留待核实",
+      "reason": "视频首发与拍摄时间地点、完整画面及版权未核实",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 31,
+      "topic": "微软裁员与员工晒帖",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/_FORAB/status/2115292913185992823",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "裁员规模与事件缺公司一手确认",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 32,
+      "topic": "问号画面语境不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/thankucrypto/status/2115314906732134650",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 33,
+      "topic": "朋友代购算账分寸",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/xupaopaogm/status/2115355442247586232",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 4,
+        "理解门槛低": 5,
+        "传播意愿": 5,
+        "可信可用": 5,
+        "讨论潜力": 5
+      },
+      "weightedScore": 4.7,
+      "status": "入选：原创观点",
+      "reason": "已读原帖；不复刻聊天截图，不写补贴资格结论，转为原创人情分寸观点",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 34,
+      "topic": "野蜂蜜风险说法",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/askaiwy/status/2115444079119253672",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "医疗健康风险需专门权威核查，未完成不采用",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 35,
+      "topic": "数字人民币工资讨论",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/daxiniu1/status/2115371891070509262",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "金融机制需权威解释且偏离本轮方向",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 36,
+      "topic": "刚果金矿武装传言",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/defi8362/status/2115315704748724485",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "武装冲突传言，不采用",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 37,
+      "topic": "创业人物推荐",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/Seramikimiki/status/2115343306209255506",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 38,
+      "topic": "峰哥马驹桥旧视频",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/nangongyuan/status/2115279637559579077",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 39,
+      "topic": "成都图片语境不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/summer_lun35206/status/2115270677951557669",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 40,
+      "topic": "AI模型基准解读",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/NFT_Chen/status/2115338760896618747",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 41,
+      "topic": "日文区引用浏览案例",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/10086110x/status/2115315422195249183",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 42,
+      "topic": "心大画面语境不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/yisvin/status/2115418730800767086",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 43,
+      "topic": "未道歉指向不明",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/Li665508Li/status/2115279711840653617",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 44,
+      "topic": "触屏MacBook反应",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/mediastorm_en/status/2115507157148004418",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "昨日苹果相关话题重复，暂不采用",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 45,
+      "topic": "HBM良率与量产说法",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/sleepy0x13/status/2115374386496901424",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 46,
+      "topic": "中转站与代理权限风险",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/quantumtransf/status/2115382858844143995",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 4,
+        "理解门槛低": 4,
+        "传播意愿": 4,
+        "可信可用": 5,
+        "讨论潜力": 4
+      },
+      "weightedScore": 4.2,
+      "status": "入选：事实稿",
+      "reason": "中转站被黑属假设；改写为官方有依据的提示注入风险，不声称发生了攻击",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 47,
+      "topic": "韩国圣诞免费机票说法",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/DUBIANCHEOVO/status/2115347273043660981",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "找到的官方抽机票活动已10月6日结束且圣诞可能受限，未匹配该原帖活动，不提供报名承诺",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 48,
+      "topic": "少量本金炒股讨论",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/DDXG_99/status/2115332122311618925",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "投资话题偏离本轮方向，不提供收益承诺",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 49,
+      "topic": "拉面馆丢弃自带饮品",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/MiaoHype/status/2115309836560720306",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 2,
+        "理解门槛低": 3,
+        "传播意愿": 2,
+        "可信可用": 1,
+        "讨论潜力": 2
+      },
+      "weightedScore": 2.0,
+      "status": "暂不采用",
+      "reason": "现有榜单摘要不足以核实全文、画面或来源，未达到可信度门槛",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    },
+    {
+      "id": 50,
+      "topic": "囤货与储物空间讨论",
+      "discoverySource": "https://xbangdan.com/posts/",
+      "originalPost": "https://x.com/Gqing0930/status/2115315106062143641",
+      "discoveredOn": "2026-10-29",
+      "eventDate": "未统一核实，发现日期不等于发生日期",
+      "scores": {
+        "反差新意": 3,
+        "理解门槛低": 5,
+        "传播意愿": 4,
+        "可信可用": 5,
+        "讨论潜力": 4
+      },
+      "weightedScore": 4.1,
+      "status": "入选：原创观点",
+      "reason": "转为原创囤货与储物空间观点，不虚构自己的订单",
+      "originalMediaPermission": "未取得，禁止默认为可转载"
+    }
+  ]
+}

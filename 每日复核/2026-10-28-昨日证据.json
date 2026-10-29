@@ -1,0 +1,601 @@
+{
+  "windowStart": "2026-10-28T08:00:00+08:00",
+  "windowEndExclusive": "2026-10-29T08:00:00+08:00",
+  "note": "发帖窗口的最新累计快照，不是窗口新增曝光",
+  "posts": [
+    {
+      "id": "2115471082107146567",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115471082107146567",
+      "text": "📸 又到了每天晒大合照的时间！\n\n还没上镜的朋友，咱们继续努力，下次争取全员到齐！\n\n诚信交友，来必往，双向奔赴才有意思！🤝\n\n晚安！好梦！",
+      "quote": "",
+      "publishedAt": "2026-10-28T15:49:44.000Z",
+      "collectedAt": "2026-10-29T00:44:27.044Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 863,
+        "likes": 31,
+        "replies": 53,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "863 views. View post analytics",
+        "likes": "31 Likes. Like",
+        "replies": "53 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115449994669068636",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115449994669068636",
+      "text": "好家伙，记者拿Anthropic招股书问两家AI值不值得买。\n\nClaude：价格合适，可以买。\nGPT：不建议。\n这年头连AI炒股，都开始护自家盘了？",
+      "quote": "",
+      "publishedAt": "2026-10-28T14:25:56.000Z",
+      "collectedAt": "2026-10-29T00:44:27.044Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 384,
+        "likes": 14,
+        "replies": 16,
+        "reposts": 1,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "384 views. View post analytics",
+        "likes": "14 Likes. Like",
+        "replies": "16 Replies. Reply",
+        "reposts": "1 repost. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115444920635019444",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115444920635019444",
+      "text": "卧槽，Claude已经把自己公司的编程面试干没了！\n\nAnthropic一位招聘经理直接取消了团队的编程测试。\n\n理由：Claude做这些题比人还强。\n\n刷了三年LeetCode，结果通知这科不考了。",
+      "quote": "",
+      "publishedAt": "2026-10-28T14:05:46.000Z",
+      "collectedAt": "2026-10-29T00:44:27.044Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 305,
+        "likes": 12,
+        "replies": 11,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "305 views. View post analytics",
+        "likes": "12 Likes. Like",
+        "replies": "11 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115444174615109939",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115444174615109939",
+      "text": "说一个残酷的事实：\n\n被举报一次约等于 丢失 355 个赞！！！\n\n所以，发帖的时候不要发的内容不忍直视😂😂",
+      "quote": "",
+      "publishedAt": "2026-10-28T14:02:48.000Z",
+      "collectedAt": "2026-10-29T00:44:27.044Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 249,
+        "likes": 7,
+        "replies": 9,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "249 views. View post analytics",
+        "likes": "7 Likes. Like",
+        "replies": "9 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115441402691912060",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115441402691912060",
+      "text": "【深挖 X 算法版】\n靠在评论区发力涨粉，有用吗？\n有用，但前提是你的评论质量过关。\n \n很多人都搞错了X平台评论区的玩法。\n跑到热门账号底下只简单夸一句内容不错，之后还疑惑为什么涨不到粉。\n \n我深挖过X对外公开的算法逻辑，数据足以证明：高质量评论，是一套值得认真布局的增长手段。\n \n1.",
+      "quote": "",
+      "publishedAt": "2026-10-28T13:51:48.000Z",
+      "collectedAt": "2026-10-29T00:44:27.044Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": true,
+      "metrics": {
+        "views": 362,
+        "likes": 8,
+        "replies": 6,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "362 views. View post analytics",
+        "likes": "8 Likes. Like",
+        "replies": "6 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115435454166348168",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115435454166348168",
+      "text": "苹果刚发布M6 iMac，宣传比旧Intel款最高快18倍！\n\n我突然意识到一件事：\n\n当年把那台慢18倍的电脑卖给我的，好像也是苹果啊？",
+      "quote": "",
+      "publishedAt": "2026-10-28T13:28:09.000Z",
+      "collectedAt": "2026-10-29T00:44:27.045Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 318,
+        "likes": 10,
+        "replies": 12,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "318 views. View post analytics",
+        "likes": "10 Likes. Like",
+        "replies": "12 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115429946491621471",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115429946491621471",
+      "text": "LOL, Zhang Ming'en's street argument with his girlfriend has gone viral on the hot search.\n\nHis own explanation: Took photos of his girlfriend that turned out too ugly, and still stubbornly refuses to admit it.",
+      "quote": "",
+      "publishedAt": "2026-10-28T13:06:16.000Z",
+      "collectedAt": "2026-10-29T00:44:27.045Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 415,
+        "likes": 10,
+        "replies": 8,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "415 views. View post analytics",
+        "likes": "10 Likes. Like",
+        "replies": "8 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115424803721269646",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115424803721269646",
+      "text": "问蓝V朋友一个扎心的问题：\n\n如果一个非蓝V主动关注你，你会回关吗？\n\n还是只有蓝V才配拥有双向奔赴？😂",
+      "quote": "",
+      "publishedAt": "2026-10-28T12:45:50.000Z",
+      "collectedAt": "2026-10-29T00:44:27.045Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 259,
+        "likes": 14,
+        "replies": 18,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "259 views. View post analytics",
+        "likes": "14 Likes. Like",
+        "replies": "18 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115417886579994775",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115417886579994775",
+      "text": "卧槽！\n\n去看病时发现医生在查豆包，\n\n当场懵了。",
+      "quote": "",
+      "publishedAt": "2026-10-28T12:18:21.000Z",
+      "collectedAt": "2026-10-29T00:44:28.655Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 331,
+        "likes": 18,
+        "replies": 17,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "331 views. View post analytics",
+        "likes": "18 Likes. Like",
+        "replies": "17 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115404302210756705",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115404302210756705",
+      "text": "Take a photo first, then dig in!\n\nSwitch to another shop and try some rice noodles!!\n\nWhat are you babies eating?",
+      "quote": "",
+      "publishedAt": "2026-10-28T11:24:22.000Z",
+      "collectedAt": "2026-10-29T00:44:30.124Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 383,
+        "likes": 32,
+        "replies": 35,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "383 views. View post analytics",
+        "likes": "32 Likes. Like",
+        "replies": "35 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115393833345405215",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115393833345405215",
+      "text": "这时间卡得真绝！\n\n孩子秋假11月15日结束，九寨沟11月16日开始执行淡季票价。\n\n门票从190元降到80元。\n\n就差一天，每人差110块。",
+      "quote": "",
+      "publishedAt": "2026-10-28T10:42:46.000Z",
+      "collectedAt": "2026-10-29T00:44:30.124Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 217,
+        "likes": 11,
+        "replies": 15,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "217 views. View post analytics",
+        "likes": "11 Likes. Like",
+        "replies": "15 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115392797624967315",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115392797624967315",
+      "text": "好家伙，现在“儿女”都有小时工了！\n\n陪老人聊天、散步、看病，有人报价300元一小时",
+      "quote": "",
+      "publishedAt": "2026-10-28T10:38:39.000Z",
+      "collectedAt": "2026-10-29T00:44:30.124Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 95,
+        "likes": 5,
+        "replies": 5,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "95 views. View post analytics",
+        "likes": "5 Likes. Like",
+        "replies": "5 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115354888511291849",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115354888511291849",
+      "text": "Guess what, what do you think I saw?",
+      "quote": "",
+      "publishedAt": "2026-10-28T08:08:01.000Z",
+      "collectedAt": "2026-10-29T00:44:30.124Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 399,
+        "likes": 21,
+        "replies": 32,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "399 views. View post analytics",
+        "likes": "21 Likes. Like",
+        "replies": "32 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115352983718572115",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115352983718572115",
+      "text": "笑死，网友买件新衣服，成分表里居然写着“27%葱”！\n\n这衣服穿出去，算不算自带葱香？",
+      "quote": "",
+      "publishedAt": "2026-10-28T08:00:27.000Z",
+      "collectedAt": "2026-10-29T00:44:31.095Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 137,
+        "likes": 5,
+        "replies": 5,
+        "reposts": 1,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "137 views. View post analytics",
+        "likes": "5 Likes. Like",
+        "replies": "5 Replies. Reply",
+        "reposts": "1 repost. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115351150618898943",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115351150618898943",
+      "text": "18天了，\n\n每天都是1k+，\n\n完全没动力了！",
+      "quote": "",
+      "publishedAt": "2026-10-28T07:53:10.000Z",
+      "collectedAt": "2026-10-29T00:44:36.867Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 296,
+        "likes": 21,
+        "replies": 31,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "296 views. View post analytics",
+        "likes": "21 Likes. Like",
+        "replies": "31 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115347702867537989",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115347702867537989",
+      "text": "你信不信，\n人一旦没有了目标，\n没工作，不上班，没压力，\n在家躺平，生活就没有了方向，\n没有了奔头，活得就像个没有灵魂的行尸走肉",
+      "quote": "",
+      "publishedAt": "2026-10-28T07:39:28.000Z",
+      "collectedAt": "2026-10-29T00:44:36.867Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 121,
+        "likes": 4,
+        "replies": 7,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "121 views. View post analytics",
+        "likes": "4 Likes. Like",
+        "replies": "7 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115336872444727656",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115336872444727656",
+      "text": "妈巴佩这波真是补水补到脑子里了。",
+      "quote": "",
+      "publishedAt": "2026-10-28T06:56:26.000Z",
+      "collectedAt": "2026-10-29T00:44:36.867Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 85,
+        "likes": 4,
+        "replies": 4,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "85 views. View post analytics",
+        "likes": "4 Likes. Like",
+        "replies": "4 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115327421637599617",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115327421637599617",
+      "text": "最新｜姆巴佩，栽了！",
+      "quote": "",
+      "publishedAt": "2026-10-28T06:18:52.000Z",
+      "collectedAt": "2026-10-29T00:44:37.876Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 69,
+        "likes": 0,
+        "replies": 1,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "69 views. View post analytics",
+        "likes": "0 Likes. Like",
+        "replies": "1 Reply. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115308137725284804",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115308137725284804",
+      "text": "卧槽，迈阿密一位女健身教练，用臀推举起约290公斤的重量，刷新吉尼斯纪录。\n\n看完突然觉得，我平时做的臀桥只能算活动了一下骨头。",
+      "quote": "",
+      "publishedAt": "2026-10-28T05:02:15.000Z",
+      "collectedAt": "2026-10-29T00:44:38.445Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 387,
+        "likes": 8,
+        "replies": 10,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "387 views. View post analytics",
+        "likes": "8 Likes. Like",
+        "replies": "10 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115299369436020992",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115299369436020992",
+      "text": "Take a photo first, then eat—let's get to it, let's get to it.\n\nWhat are you all eating, babies? Post it so I can feel a little jealous.",
+      "quote": "",
+      "publishedAt": "2026-10-28T04:27:24.000Z",
+      "collectedAt": "2026-10-28T14:46:43.825Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 378,
+        "likes": 27,
+        "replies": 37,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "378 views. View post analytics",
+        "likes": "27 Likes. Like",
+        "replies": "37 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115286781927231568",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115286781927231568",
+      "text": "卧槽！这一出“深山救人”，结局真够离谱。\n\n博主拍视频称偶遇流浪女子，随后持续救助、直播带货，账号涨粉近30万。\n\n警方一查：两人竟是夫妻，所谓偶遇全是摆拍。",
+      "quote": "",
+      "publishedAt": "2026-10-28T03:37:23.000Z",
+      "collectedAt": "2026-10-28T14:46:48.230Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 224,
+        "likes": 5,
+        "replies": 6,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "224 views. View post analytics",
+        "likes": "5 Likes. Like",
+        "replies": "6 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    },
+    {
+      "id": "2115247507399987483",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115247507399987483",
+      "text": "早上好，牛马已就位！开摊了",
+      "quote": "",
+      "publishedAt": "2026-10-28T01:01:19.000Z",
+      "collectedAt": "2026-10-28T14:46:48.509Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 370,
+        "likes": 24,
+        "replies": 35,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "370 views. View post analytics",
+        "likes": "24 Likes. Like",
+        "replies": "35 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      }
+    }
+  ]
+}

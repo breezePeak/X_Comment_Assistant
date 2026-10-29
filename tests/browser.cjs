@@ -40,7 +40,7 @@ async function main() {
     await context.addInitScript(({ post }) => {
       const listeners = [];
       const local = {};
-      const session = {};
+      const session = location.search === "?recover" ? { assistantEnabled: true } : {};
       const activated = [];
       const messages = [];
       function area(data, name) {
@@ -84,7 +84,10 @@ async function main() {
           id: "test-extension",
           onMessage: { addListener: listener => messages.push(listener) },
           openOptionsPage: async () => { window.__mock.optionsOpened = true; },
-          sendMessage: (message, callback) => { window.__mock.sent.push(message); callback({ ok: true }); }
+          sendMessage: (message, callback) => {
+            if (message.type === "GET_ASSISTANT_STATE") callback({ ok: true, enabled: session.assistantEnabled === true });
+            else { window.__mock.sent.push(message); callback({ ok: true }); }
+          }
         }
       };
       window.__activate = id => { window.__mock.selected = id; activated.forEach(listener => listener({ tabId: id, windowId: 1 })); };
@@ -93,15 +96,32 @@ async function main() {
         messages.forEach(listener => listener({ type: "GET_CURRENT_POST" }, { id: "test-extension" }, value => { response = value; }));
         return response;
       };
+      window.__followingChanged = (tabId = 1, id = "test-extension") => {
+        messages.forEach(listener => listener({ type: "FOLLOWING_LIST_CHANGED" }, { id, tab: { id: tabId }, url: "https://x.com/me/following" }));
+      };
+      window.__setContentEnabled = enabled => {
+        session.assistantEnabled = enabled;
+        messages.forEach(listener => listener({ type: "ASSISTANT_STATE", enabled }, { id: "test-extension" }, () => {}));
+      };
     }, { post });
 
     const page = await context.newPage();
     await page.goto(origin + "/sidepanel.html");
     await page.waitForSelector("#setup:not([hidden])");
+    await page.waitForFunction(() => !document.getElementById("assistant-toggle").disabled);
+    assert.equal(await page.locator("#assistant-toggle").getAttribute("aria-pressed"), "false");
+    assert(await page.locator("#read-current").isDisabled());
     assert(await page.locator("#empty").isVisible());
     await page.locator("#configure").click();
     assert(await page.evaluate(() => window.__mock.optionsOpened));
     await page.evaluate(async () => { await chrome.storage.session.set({ "post:1": window.__mock.post }); });
+    await page.waitForTimeout(150);
+    assert(!(await page.locator("#source").isVisible()), "默认关闭时不读取会话帖子");
+    await page.screenshot({ path: path.join(artifacts, "panel-disabled.png"), fullPage: true });
+    await page.locator("#assistant-toggle").click();
+    assert.equal(await page.locator("#assistant-toggle").getAttribute("aria-pressed"), "true");
+    assert(!(await page.locator("#source").isVisible()), "点击开启本身不读取旧帖子或生成评论");
+    await page.evaluate(async () => { await chrome.storage.session.set({ "post:1": { ...window.__mock.post, selectionId: "after-enable" } }); });
     await page.waitForSelector("#source:not([hidden])");
     assert(await page.locator("#generate").isDisabled());
     assert.equal(await page.locator("#post-text").innerText(), post.text);
@@ -131,6 +151,23 @@ async function main() {
     assert.equal(await page.locator("#reply-list script").count(), 0);
     await page.locator(".reply-text").first().fill(replies.replies[0].text);
     await page.screenshot({ path: path.join(artifacts, "panel-results.png"), fullPage: true });
+    mode = "delayed";
+    await page.locator("#generate").click();
+    await page.locator("#assistant-toggle").click();
+    const stopped = requests;
+    await page.waitForTimeout(500);
+    assert(!(await page.locator("#results").isVisible()), "关闭时取消生成，迟到结果不得出现");
+    assert(await page.locator("#read-current").isDisabled());
+    await page.evaluate(async () => { await chrome.storage.session.set({ "post:1": { ...window.__mock.post, text: "关闭后选择的帖子", selectionId: "disabled-selection" } }); });
+    assert.equal(requests, stopped, "关闭后即使收到帖子变更也不能请求 AI");
+    await page.locator("#generate").evaluate(button => button.dispatchEvent(new Event("click")));
+    assert.equal(requests, stopped, "关闭后生成入口也必须受开关保护");
+    await page.locator("#assistant-toggle").click();
+    await page.waitForTimeout(150);
+    assert.equal(requests, stopped, "重新开启不会自动生成旧选择");
+    mode = "normal";
+    await page.evaluate(async () => { await chrome.storage.session.set({ "post:1": { ...window.__mock.post, selectionId: "re-enabled-selection" } }); });
+    await page.waitForSelector("#results:not([hidden])");
     const before = requests;
     await page.evaluate(async () => { await chrome.storage.session.set({ "post:1": window.__mock.post }); });
     await page.waitForTimeout(100);
@@ -360,6 +397,11 @@ async function main() {
     await fixture.setContent(`<article data-testid="tweet"><div data-testid="User-Name">Alice @alice</div><a href="https://x.com/alice/status/123"><time>now</time></a><div data-testid="tweetText">第一行<br>第二行<img alt="😀"></div><div data-testid="tweetText">引用的内容</div><div data-testid="tweetPhoto"></div><button data-testid="reply"><span>回复</span></button></article>`);
     await fixture.addScriptTag({ path: path.join(root, "content.js") });
     await fixture.locator('[data-testid="reply"] span').click();
+    assert.equal(await fixture.evaluate(() => window.__mock.sent.length), 0, "未开启时点击回复不读帖、不发送消息");
+    assert.equal(await fixture.evaluate(() => window.__readCurrent().post), null);
+    await fixture.evaluate(() => window.__setContentEnabled(true));
+    assert.equal(await fixture.evaluate(() => window.__mock.sent.length), 0, "启用内容脚本不能立即选择旧帖子");
+    await fixture.locator('[data-testid="reply"] span').click();
     const captured = await fixture.evaluate(() => window.__mock.sent.at(-1));
     assert.equal(captured.post.text, "第一行\n第二行😀");
     assert.equal(captured.post.quote, "引用的内容");
@@ -370,11 +412,23 @@ async function main() {
     await fixture.evaluate(() => document.body.insertAdjacentHTML("beforeend", '<article data-testid="tweet"><a href="https://x.com/new/status/999"><time>now</time></a><div data-testid="tweetText">动态加载</div><button data-testid="reply">回复新帖</button></article>'));
     await fixture.getByText("回复新帖", { exact: true }).click();
     assert.equal(await fixture.evaluate(() => window.__mock.sent.at(-1).post.text), "动态加载");
+    await fixture.evaluate(() => window.__setContentEnabled(false));
+    const disabledCaptures = await fixture.evaluate(() => window.__mock.sent.length);
+    await fixture.locator('[data-testid="tweetText"]').first().evaluate(node => { node.textContent = "关闭后修改正文"; });
+    await fixture.getByText("回复新帖", { exact: true }).click();
+    await fixture.waitForTimeout(180);
+    assert.equal(await fixture.evaluate(() => window.__mock.sent.length), disabledCaptures, "关闭后动态页面变化和点击都不捕获帖子");
+    assert.equal(await fixture.evaluate(() => window.__readCurrent().post), null);
+    await fixture.evaluate(() => window.__setContentEnabled(true));
+    await fixture.getByText("回复新帖", { exact: true }).click();
+    assert.equal(await fixture.evaluate(() => window.__mock.sent.length), disabledCaptures + 1, "重新开启后同一帖仍能再次选择");
 
     const modal = await context.newPage();
     await modal.goto(origin + "/sidepanel.html");
     await modal.setContent('<div id="layers"><div role="dialog"><article data-testid="tweet" role="article"><div data-testid="User-Name">Edwin @Edwin_csh · <time>37m</time></div><div data-testid="tweetText">自从做了X之后！<br>回复里的原帖没有链接<img alt="😮‍💨"></div></article><div role="textbox" contenteditable="true" data-testid="tweetTextarea_0"></div></div></div>');
     await modal.addScriptTag({ path: path.join(root, "content.js") });
+    await modal.evaluate(() => window.__setContentEnabled(true));
+    await modal.locator('[data-testid="tweetTextarea_0"]').click();
     await modal.waitForFunction(() => window.__mock.sent.some(message => message.type === "POST_SELECTED"), null, { timeout: 3000 });
     const modalPost = await modal.evaluate(() => window.__mock.sent.find(message => message.type === "POST_SELECTED").post);
     assert.equal(modalPost.url, "");
@@ -407,6 +461,7 @@ async function main() {
       <h2>Discover more</h2><article data-testid="tweet" id="recommended-post"><a href="https://x.com/other/status/900"><time>now</time></a><div data-testid="tweetText">无关推荐帖子</div><button data-testid="reply">回复推荐</button></article>
     </main>`);
     await thread.addScriptTag({ path: path.join(root, "content.js") });
+    await thread.evaluate(() => window.__setContentEnabled(true));
     await thread.getByText("回复评论", { exact: true }).click();
     const target = await thread.evaluate(() => window.__mock.sent.at(-1).post);
     assert.equal(target.text, "来了");
@@ -460,8 +515,133 @@ async function main() {
     await recovery.evaluate(() => { window.__mock.disconnected = false; window.__mock.currentPost = null; });
     await recovery.locator("#read-current").click();
     assert.match(await recovery.locator("#status").innerText(), /先打开/);
+    const postsToken = "test-posts-token-at-least-32-characters";
+    const service = { baseUrl: "https://posts.example.test", token: postsToken };
+    const hotPosts = [4, 3, 2, 1].map(id => ({ id, externalId: `hot-${id}`, title: `热点 ${id}`,
+      text: `候选 ${id} 的图文正文。<img src=x onerror="alert(1)">`, createdAt: "2026-10-19T01:00:00Z", consumedAt: id === 1 ? "2026-10-19T02:00:00Z" : null,
+      images: [{ path: `/api/posts/${id}/images/0`, alt: "测试配图" }, { url: "https://media.example.test/photo.png", alt: "外部配图" }],
+      sources: [{ title: "来源资料", url: "https://example.com/news" }, { title: "危险链接", url: "javascript:alert(1)" }] }));
+    let consumeFails = false;
+    let remoteImageHadToken = false;
+    const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Authorization, Content-Type", "Access-Control-Allow-Methods": "GET, POST, OPTIONS" };
+    await context.route("https://media.example.test/**", async route => {
+      remoteImageHadToken ||= Boolean(route.request().headers().authorization);
+      await route.fulfill({ contentType: "image/png", body: fs.readFileSync(path.join(root, "icons/icon128.png")) });
+    });
+    await context.route(service.baseUrl + "/**", async route => {
+      const request = route.request();
+      const url = new URL(request.url());
+      if (request.method() === "OPTIONS") return route.fulfill({ status: 204, headers: cors });
+      if (request.headers().authorization !== `Bearer ${postsToken}`) return route.fulfill({ status: 401, headers: cors, json: { error: "Token 无效" } });
+      if (url.pathname.endsWith("/images/0")) return route.fulfill({ headers: cors, contentType: "image/png", body: fs.readFileSync(path.join(root, "icons/icon128.png")) });
+      if (url.pathname.endsWith("/consume")) {
+        if (consumeFails) return route.fulfill({ status: 503, headers: cors, json: { error: "暂时无法标记，请重试。" } });
+        const id = Number(url.pathname.split("/")[3]);
+        const item = hotPosts.find(post => post.id === id);
+        item.consumedAt = request.postDataJSON().consumed ? "2026-10-19T03:00:00Z" : null;
+        return route.fulfill({ headers: cors, json: { post: item } });
+      }
+      const filtered = hotPosts.filter(post => (url.searchParams.get("status") === "all" || !post.consumedAt) && post.id < Number(url.searchParams.get("before") || 999));
+      const limit = Math.min(2, Number(url.searchParams.get("limit") || 20));
+      return route.fulfill({ headers: cors, json: { posts: filtered.slice(0, limit), nextCursor: filtered.length > limit ? filtered[limit - 1].id : null } });
+    });
+    const hotOptions = await context.newPage();
+    await hotOptions.goto(origin + "/options.html");
+    await hotOptions.locator("#posts-base-url").fill(service.baseUrl);
+    await hotOptions.locator("#posts-token").fill("wrong-posts-token-with-32-characters");
+    await hotOptions.locator("#posts-save").click();
+    await hotOptions.waitForSelector("#posts-config-status.error");
+    assert.equal(await hotOptions.evaluate(() => window.__mock.local.postService), undefined);
+    await hotOptions.locator("#posts-token").fill(postsToken);
+    await hotOptions.locator("#posts-save").click();
+    await hotOptions.waitForFunction(() => window.__mock.local.postService?.token);
+    assert.deepEqual(await hotOptions.evaluate(() => window.__mock.local.postService), service);
+    assert.equal(await hotOptions.evaluate(() => window.__mock.local.settings), undefined, "热点配置不要求填写评论 AI");
+    const hot = await context.newPage();
+    await hot.goto(origin + "/sidepanel.html");
+    await hot.locator("#view-posts").click();
+    await hot.waitForSelector("#posts-status.error");
+    await hot.evaluate(async config => chrome.storage.local.set({ postService: config }), service);
+    await hot.waitForFunction(() => document.querySelectorAll(".hot-post").length === 2);
+    assert.equal(await hot.locator("#assistant-toggle").getAttribute("aria-pressed"), "false", "热点列表在评论助手关闭时独立可用");
+    assert.equal(await hot.locator("#posts-show-consumed").isChecked(), false);
+    assert(await hot.locator("#posts-more").isVisible());
+    assert.equal(await hot.getByText("危险链接", { exact: true }).count(), 0);
+    await hot.waitForFunction(() => document.querySelector(".hot-post-images img")?.naturalWidth > 0);
+    assert((await hot.locator(".hot-post-images a").first().getAttribute("href")).startsWith("blob:"));
+    assert(await hot.locator(".hot-post-images a").first().getAttribute("download"));
+    await hot.locator(".hot-post textarea").first().fill("编辑后的热点正文。");
+    await hot.getByRole("button", { name: "复制正文", exact: true }).first().click();
+    assert.equal(await hot.evaluate(() => window.__mock.clipboard), "编辑后的热点正文。");
+    assert.equal(hotPosts[0].consumedAt, null, "复制不能标记消费");
+    await hot.screenshot({ path: path.join(artifacts, "panel-hot-posts.png"), fullPage: true });
+    consumeFails = true;
+    await hot.getByRole("button", { name: "我已发布", exact: true }).first().click();
+    await hot.waitForSelector("#posts-status.error");
+    assert.equal(await hot.locator(".hot-post").count(), 2, "标记失败保留帖子");
+    consumeFails = false;
+    await hot.getByRole("button", { name: "我已发布", exact: true }).first().click();
+    await hot.waitForFunction(() => document.querySelectorAll(".hot-post").length === 1);
+    assert(hotPosts[0].consumedAt);
+    await hot.locator("#posts-more").click();
+    await hot.waitForFunction(() => document.querySelectorAll(".hot-post").length === 2);
+    assert(!(await hot.locator("#posts-more").isVisible()));
+    await hot.locator("#posts-show-consumed").check();
+    await hot.getByRole("button", { name: "恢复待发布", exact: true }).first().waitFor();
+    await hot.getByRole("button", { name: "恢复待发布", exact: true }).first().click();
+    await hot.waitForFunction(() => document.getElementById("posts-status").textContent.includes("已恢复"));
+    assert.equal(hotPosts[0].consumedAt, null);
+    await hot.locator("#posts-show-consumed").uncheck();
+    await hot.waitForFunction(() => document.querySelectorAll(".hot-post").length === 2);
+    assert.equal(remoteImageHadToken, false, "外部图片请求不携带服务 Token");
+    await hot.setViewportSize({ width: 300, height: 700 });
+    assert(await hot.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "窄侧边栏不得横向溢出");
+    await hot.locator("#view-comments").click();
+    assert(await hot.locator("#comments-view").isVisible());
+    await hotOptions.locator("#posts-disconnect").click();
+    await hotOptions.waitForFunction(() => window.__mock.local.postService?.baseUrl === "http://127.0.0.1:12345");
+    assert.equal(await hotOptions.locator("#posts-token").inputValue(), "");
+    await hot.evaluate(() => {
+      chrome.tabs.sendMessage = async (tabId, message) => {
+        if (message.type === "GET_NON_FOLLOWERS") return { ok: true, owner: "me", checked: 2, accounts: window.__mock.unfollowed ? [] : [{ handle: "alice" }] };
+        window.__mock.followingAction = { tabId, ...message };
+        return { ok: true };
+      };
+    });
+    await hot.locator("#view-following").click();
+    assert(await hot.locator("#following-view").isVisible());
+    assert(!(await hot.locator("#comments-view").isVisible()));
+    assert(!(await hot.locator("#posts-view").isVisible()));
+    assert.equal(await hot.locator("#following-refresh").count(), 0, "自动识别无需读取按钮");
+    await hot.locator(".following-account").waitFor();
+    assert.equal(await hot.locator(".following-account a").getAttribute("href"), "https://x.com/alice");
+    await hot.locator(".following-account button").click();
+    await hot.waitForFunction(() => document.getElementById("following-status").textContent.includes("弹窗"));
+    assert.equal((await hot.evaluate(() => window.__mock.followingAction)).handle, "alice");
+    assert.equal(await hot.locator(".following-account").count(), 1, "打开弹窗后保留账号");
+    await hot.evaluate(() => {
+      window.__mock.unfollowed = true;
+      window.__followingChanged(99);
+      window.__followingChanged(1, "external");
+    });
+    assert.equal(await hot.locator(".following-account").count(), 1, "忽略其他标签页或外部消息");
+    await hot.evaluate(() => window.__followingChanged());
+    await hot.waitForFunction(() => document.querySelectorAll(".following-account").length === 0 && document.getElementById("following-status").textContent.includes("0 个未显示"));
+    await hot.evaluate(() => { window.__mock.unfollowed = false; });
+    await hot.evaluate(() => window.__followingChanged());
+    await hot.locator(".following-account").waitFor();
+    await hot.setViewportSize({ width: 300, height: 700 });
+    assert(await hot.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "未回关页不得横向溢出");
+    await hot.evaluate(() => window.__activate(2));
+    await hot.locator(".following-account").waitFor();
+    await hot.locator("#view-posts").click();
+    assert(!(await hot.locator("#following-view").isVisible()));
+    await hot.locator("#view-comments").click();
+    assert(await hot.locator("#comments-view").isVisible());
+    console.log("✓ 未回关侧边栏回归通过：入口切换、读取、取消确认提示、标签页隔离、窄屏布局。");
     assert.deepEqual(errors, []);
-    console.log("✓ 浏览器回归通过：模型逐行增删、设置切换与请求路由、主页面隐藏模型、双语显示与只复制原文、主帖上下文、API 测试及原有功能。");
+    console.log("✓ 热点回归通过：独立配置、Token 失败、分页、图文预览、复制、消费隐藏、失败保留、恢复与窄栏布局。");
+    console.log("✓ 浏览器回归通过：默认关闭、手动开启、关闭取消与同帖重新选择，以及多厂家模型、双语复制、主帖上下文和 API 测试。");
     console.log(`截图：${artifacts}`);
   } finally {
     if (browser) await browser.close();

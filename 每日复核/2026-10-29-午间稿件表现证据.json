@@ -1,0 +1,266 @@
+{
+  "snapshot": "20261029-134519-681734.json",
+  "runAt": "2026-10-29T13:46:31.188543+08:00",
+  "windowStart": "2026-10-29T08:00:00+08:00",
+  "windowEnd": "2026-10-30T08:00:00+08:00",
+  "coverage": "unverified",
+  "windowIncrement": null,
+  "records": 8,
+  "knownViewRecords": 7,
+  "knownViewsSum": 2149,
+  "knownViewsMedian": 255,
+  "receivedRepliesSum": 181,
+  "repostsSum": 2,
+  "confirmedDraftViewsSum": 317,
+  "confirmedDraftRepostsSum": 0,
+  "posts": [
+    {
+      "id": "2115604820782645392",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115604820782645392",
+      "text": "各位卷王们，早上好！\n\n1k 评论就排到60多名了！！！\n\n你们今天的目标是多少？\n\n赖茴",
+      "quote": "",
+      "publishedAt": "2026-10-29T00:41:09.000Z",
+      "collectedAt": "2026-10-29T05:42:10.088Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 255,
+        "likes": 11,
+        "replies": 22,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "255 views. View post analytics",
+        "likes": "11 Likes. Like",
+        "replies": "22 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T08:41:09+08:00",
+      "collectedBeijing": "2026-10-29T13:42:10.088000+08:00",
+      "ageHours": 5.017,
+      "authorship": "unattributed"
+    },
+    {
+      "id": "2115619602281771336",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115619602281771336",
+      "text": "If I don't understand, I'll just ask:\n\nIs this a new profession? Bridge guardian?\n\nAre they afraid the bridge will run away or something??",
+      "quote": "",
+      "publishedAt": "2026-10-29T01:39:54.000Z",
+      "collectedAt": "2026-10-29T05:43:54.367Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 686,
+        "likes": 31,
+        "replies": 42,
+        "reposts": 2,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "686 views. View post analytics",
+        "likes": "31 Likes. Like",
+        "replies": "42 Replies. Reply",
+        "reposts": "2 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T09:39:54+08:00",
+      "collectedBeijing": "2026-10-29T13:43:54.367000+08:00",
+      "ageHours": 4.067,
+      "authorship": "unattributed"
+    },
+    {
+      "id": "2115634203526361482",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115634203526361482",
+      "text": "哎，酒店最该标在首页的参数，除了房价，还该有隔音。\n\n房间多几平方米，抵不上隔壁凌晨两点的奇怪声音。",
+      "quote": "",
+      "publishedAt": "2026-10-29T02:37:55.000Z",
+      "collectedAt": "2026-10-29T05:43:32.071Z",
+      "isQuote": false,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 210,
+        "likes": 10,
+        "replies": 11,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "210 views. View post analytics",
+        "likes": "10 Likes. Like",
+        "replies": "11 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T10:37:55+08:00",
+      "collectedBeijing": "2026-10-29T13:43:32.071000+08:00",
+      "ageHours": 3.094,
+      "authorship": "confirmed_user_modified"
+    },
+    {
+      "id": "2115640071970066529",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115640071970066529",
+      "text": "Light-colored clothes are the easiest at exposing secrets, aren't they?",
+      "quote": "",
+      "publishedAt": "2026-10-29T03:01:14.000Z",
+      "collectedAt": "2026-10-29T05:43:32.071Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 416,
+        "likes": 30,
+        "replies": 42,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "416 views. View post analytics",
+        "likes": "30 Likes. Like",
+        "replies": "42 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T11:01:14+08:00",
+      "collectedBeijing": "2026-10-29T13:43:32.071000+08:00",
+      "ageHours": 2.705,
+      "authorship": "unattributed"
+    },
+    {
+      "id": "2115650717184831636",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115650717184831636",
+      "text": "好家伙，实验里两只乌鸦判断圆点往哪边动，平均只用0.235秒。\n\n乌鸦已经交卷，人类还在选午饭。",
+      "quote": "",
+      "publishedAt": "2026-10-29T03:43:32.000Z",
+      "collectedAt": "2026-10-29T05:43:32.071Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 107,
+        "likes": 6,
+        "replies": 5,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "107 views. View post analytics",
+        "likes": "6 Likes. Like",
+        "replies": "5 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T11:43:32+08:00",
+      "collectedBeijing": "2026-10-29T13:43:32.071000+08:00",
+      "ageHours": 2.0,
+      "authorship": "confirmed_exact"
+    },
+    {
+      "id": "2115654368544641141",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115654368544641141",
+      "text": "我去查了下缘由，竟发现了惊天大瓜啊！！！😱😱😱",
+      "quote": "不懂就问：\n\n这是新增职业吗？守桥人？\n\n难道怕桥跑了不成？？",
+      "publishedAt": "2026-10-29T03:58:03.000Z",
+      "collectedAt": "2026-10-29T03:58:03.736Z",
+      "isQuote": true,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": null,
+        "likes": 0,
+        "replies": 0,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "View post analytics",
+        "likes": "0 Likes. Like",
+        "replies": "0 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T11:58:03+08:00",
+      "collectedBeijing": "2026-10-29T11:58:03.736000+08:00",
+      "ageHours": 0.0,
+      "authorship": "unattributed"
+    },
+    {
+      "id": "2115654432616780016",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115654432616780016",
+      "text": "卧槽！我去查了下缘由，竟发现了惊天大瓜啊！！！😱😱😱",
+      "quote": "If I don't understand, I'll just ask:\n\nIs this a new profession? Bridge guardian?\n\nAre they afraid the bridge will run away or something??",
+      "publishedAt": "2026-10-29T03:58:18.000Z",
+      "collectedAt": "2026-10-29T05:43:53.509Z",
+      "isQuote": true,
+      "hasImage": false,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 87,
+        "likes": 3,
+        "replies": 6,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "87 views. View post analytics",
+        "likes": "3 Likes. Like",
+        "replies": "6 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T11:58:18+08:00",
+      "collectedBeijing": "2026-10-29T13:43:53.509000+08:00",
+      "ageHours": 1.76,
+      "authorship": "unattributed"
+    },
+    {
+      "id": "2115659678600642622",
+      "owner": "1nhkjltx",
+      "url": "https://x.com/1nhkjltx/status/2115659678600642622",
+      "text": "Old rules first: take a photo, then chow down!!\n\nWhat are you all eating as you pass by?\n\n#蓝V交友",
+      "quote": "",
+      "publishedAt": "2026-10-29T04:19:09.000Z",
+      "collectedAt": "2026-10-29T05:43:54.367Z",
+      "isQuote": false,
+      "hasImage": true,
+      "hasVideo": false,
+      "textMayBeTruncated": false,
+      "metrics": {
+        "views": 388,
+        "likes": 34,
+        "replies": 53,
+        "reposts": 0,
+        "bookmarks": null
+      },
+      "metricLabels": {
+        "views": "388 views. View post analytics",
+        "likes": "34 Likes. Like",
+        "replies": "53 Replies. Reply",
+        "reposts": "0 reposts. Repost",
+        "bookmarks": "Bookmark"
+      },
+      "publishedBeijing": "2026-10-29T12:19:09+08:00",
+      "collectedBeijing": "2026-10-29T13:43:54.367000+08:00",
+      "ageHours": 1.413,
+      "authorship": "unattributed"
+    }
+  ]
+}

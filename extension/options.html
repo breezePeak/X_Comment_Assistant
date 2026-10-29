@@ -3,13 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>API 配置 · X 评论助手</title>
+  <title>设置 · X 评论助手</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="posts.css">
   <script type="module" src="options.js"></script>
+  <script type="module" src="posts-options.js"></script>
+  <script type="module" src="analytics-options.js"></script>
 </head>
 <body class="options-page">
   <main class="settings-shell">
-    <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><strong>X 评论助手</strong><span class="tag">连接设置</span></div>
+    <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><strong>X 评论助手</strong><span class="tag">设置</span></div>
     <h1>你的 AI，你的表达。</h1>
     <p class="intro">每个 AI 厂家可以添加多个模型。在这里选择厂家与当前模型，保存后用于评论生成；每家的 API 地址与 Key 独立保存。</p>
     <form id="config-form" class="settings-card">
@@ -39,6 +42,26 @@
     </form>
     <aside class="privacy-note"><strong>由你选择，始终由你发布。</strong><p>点击回复会将该帖可读取的正文、作者、链接及引用文字发送至你配置的服务，可能产生 API 费用。插件不会读取登录凭据，不会自动填写或发布评论。API Key 以本机明文形式存储，请只在可信设备上使用。</p></aside>
     <p class="field-hint">初始地址与模型为 DeepSeek 示例，可按你的服务商替换。API Key 需自行申请；网页聊天订阅不等于 API 额度。</p>
+    <form id="analytics-profile-form" class="settings-card">
+      <h2>我的数据</h2>
+      <label for="analytics-profile-url">我的 X 主页地址</label>
+      <input id="analytics-profile-url" type="url" required placeholder="https://x.com/1nhkjltx" autocomplete="off">
+      <p class="field-hint">默认 https://x.com/1nhkjltx。返回该主页或在主页滚动时自动采集，保存后立即生效；修改账号不会删除之前采集的数据。</p>
+      <div class="settings-actions"><button id="analytics-profile-save" type="submit" class="primary">保存主页</button></div>
+      <div id="analytics-profile-status" class="status-message" role="status" aria-live="polite"></div>
+    </form>
+    <form id="posts-config-form" class="settings-card">
+      <h2>热点帖子服务与本人数据</h2>
+      <p class="field-hint">默认连接本机服务，双击「启动本地服务.cmd」即可使用，无需填写 Token。在上方配置个人主页；返回该主页或滚动时自动采集到扩展本机缓存，服务可用时自动上传。</p>
+      <label for="posts-base-url">服务地址</label>
+      <input id="posts-base-url" type="url" required placeholder="http://127.0.0.1:12345" autocomplete="off">
+      <p class="field-hint">填写服务根地址，不含 /api/posts。支持 HTTP 和 HTTPS；HTTP 会明文传输 Token，仅建议用于可信网络。</p>
+      <label for="posts-token">服务 Token（本机留空）</label>
+      <input id="posts-token" type="password" minlength="32" maxlength="256" autocomplete="off" spellcheck="false" placeholder="本机服务不用填">
+      <p class="field-hint">Token 只保存在本机扩展存储，通过 Authorization 请求头发送到已授权的服务地址。</p>
+      <div class="settings-actions"><button id="posts-save" class="primary" type="submit">验证连接并保存</button><button id="posts-disconnect" class="text-button" type="button">使用本地默认</button></div>
+      <div id="posts-config-status" class="status-message" role="status" aria-live="polite"></div>
+    </form>
   </main>
 </body>
 </html>

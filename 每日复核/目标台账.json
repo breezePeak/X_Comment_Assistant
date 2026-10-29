@@ -1,0 +1,35 @@
+{
+  "owner": "1nhkjltx",
+  "timezone": "Asia/Shanghai",
+  "target": 500000,
+  "durationWindows": 40,
+  "campaignStartInclusive": "2026-10-29T08:00:00+08:00",
+  "campaignEndExclusive": "2026-12-08T08:00:00+08:00",
+  "lastReviewDate": "2026-12-09",
+  "metric": "主帖及引用帖的窗口新增浏览；回复曝光另列；非去重人数",
+  "dailyPace": 12500,
+  "verifiedCumulative": null,
+  "status": "待取得可比08点边界快照或官方数据；未确认值不得补零",
+  "windows": [],
+  "paceCheckpoints": {
+    "7": 87500,
+    "14": 175000,
+    "21": 262500,
+    "28": 350000,
+    "35": 437500,
+    "40": 500000
+  },
+  "preCampaignBaseline": {
+    "windowStart": "2026-10-28T08:00:00+08:00",
+    "windowEndExclusive": "2026-10-29T08:00:00+08:00",
+    "source": "https://xbangdan.com/account/1nhkjltx/",
+    "pageUpdated": "2026-10-29T08:22:00+08:00",
+    "reportedPostImpressions": 3162,
+    "posts": 22,
+    "estimatedRepliesSent": 1029,
+    "netFollowers": 212,
+    "localCohortCumulativeViews": 6647,
+    "includedInCampaign": false,
+    "note": "站方口径，非官方后台；本地累计快照另列，不是新增"
+  }
+}

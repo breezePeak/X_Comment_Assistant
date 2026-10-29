@@ -7,6 +7,9 @@
   let lastSent = "";
   let threadPath = "";
   let threadRoot = null;
+  let enabled = false;
+  let stateReceived = false;
+  let hasSelection = false;
 
   function statusPath(value) {
     if (!value) return "";
@@ -89,6 +92,7 @@
   }
 
   function currentPost() {
+    if (!enabled) return null;
     readThreadRoot();
     const dialogs = [...document.querySelectorAll('[role="dialog"]')].reverse();
     const dialog = dialogs.find(node => node.getClientRects().length && node.querySelector(editorSelector));
@@ -136,7 +140,7 @@
   }
 
   function selectPost(post, openPanel = false) {
-    if (!post) return;
+    if (!enabled || !post) return;
     const key = JSON.stringify(post);
     if (!openPanel && key === lastSent) return;
     lastSent = key;
@@ -150,15 +154,24 @@
   }
 
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message?.type !== "GET_CURRENT_POST" || sender.id !== chrome.runtime.id) return;
-    sendResponse({ ok: true, post: currentPost() });
+    if (sender.id !== chrome.runtime.id) return;
+    if (message?.type === "ASSISTANT_STATE") {
+      stateReceived = true;
+      setEnabled(message.enabled === true);
+      sendResponse({ ok: true });
+    } else if (message?.type === "GET_CURRENT_POST") {
+      const post = currentPost();
+      hasSelection = Boolean(post);
+      sendResponse({ ok: true, post, disabled: !enabled });
+    }
   });
 
-  document.addEventListener("click", event => {
-    if (!event.isTrusted || !(event.target instanceof Element)) return;
+  function onClick(event) {
+    if (!enabled || !event.isTrusted || !(event.target instanceof Element)) return;
     const reply = event.target.closest('[data-testid="reply"]');
     const inline = event.target.closest('[data-testid^="tweetTextarea_"]');
     if (!reply && !inline) return;
+    hasSelection = true;
     if (inline) {
       if (!inline.closest('[role="dialog"]')) lastClicked = null;
       selectPost(currentPost(), true);
@@ -169,24 +182,51 @@
       lastClicked = withContext(extractPost(article), article);
       selectPost(lastClicked, true);
     }
-  }, true);
+  }
 
-  document.addEventListener("focusin", event => {
-    if (event.isTrusted && event.target instanceof Element && event.target.matches(editorSelector)) {
+  function onFocus(event) {
+    if (enabled && hasSelection && event.isTrusted && event.target instanceof Element && event.target.matches(editorSelector)) {
       selectPost(currentPost());
     }
-  }, true);
+  }
 
   // shortcut: 仅识别 DOM 可见文字；X 调整回复弹窗结构时需更新选择器。
   let timer;
   function syncCurrent() {
+    if (!enabled) return;
+    readThreadRoot();
+    if (!hasSelection) return;
     const post = currentPost();
     if (post) selectPost(post);
     else lastSent = "";
   }
-  new MutationObserver(() => {
+  const observer = new MutationObserver(() => {
     clearTimeout(timer);
     timer = setTimeout(syncCurrent, 120);
-  }).observe(document.body, { childList: true, subtree: true, characterData: true });
-  syncCurrent();
+  });
+
+  function setEnabled(value) {
+    if (enabled === value) return;
+    enabled = value;
+    clearTimeout(timer);
+    lastClicked = null;
+    lastSent = "";
+    threadPath = "";
+    threadRoot = null;
+    hasSelection = false;
+    if (enabled) {
+      document.addEventListener("click", onClick, true);
+      document.addEventListener("focusin", onFocus, true);
+      observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+      readThreadRoot();
+    } else {
+      document.removeEventListener("click", onClick, true);
+      document.removeEventListener("focusin", onFocus, true);
+      observer.disconnect();
+    }
+  }
+
+  chrome.runtime.sendMessage({ type: "GET_ASSISTANT_STATE" }, response => {
+    if (!chrome.runtime.lastError && !stateReceived) setEnabled(response?.enabled === true);
+  });
 })();

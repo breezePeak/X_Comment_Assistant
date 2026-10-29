@@ -1,7 +1,11 @@
 {
   "name": "x-comment-assistant",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node tests/run.mjs" }
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "start": "node --env-file-if-exists=server/.env server/server.mjs",
+    "test": "node tests/run.mjs && node --test tests/friendly.test.mjs tests/following.test.mjs"
+  }
 }

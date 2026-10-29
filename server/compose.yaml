@@ -1,0 +1,17 @@
+services:
+  posts:
+    build: .
+    restart: unless-stopped
+    environment:
+      POSTS_API_TOKEN: ${POSTS_API_TOKEN:?Set POSTS_API_TOKEN in .env}
+    ports:
+      - "12345:8787"
+    volumes:
+      - posts-data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  posts-data:

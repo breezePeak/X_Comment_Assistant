@@ -60,6 +60,20 @@ await test("提示词区分不可信帖子与用户指令，保留语言和偏�
   assert.throws(() => buildMessages(post, settings, "a".repeat(801)), /800/);
 });
 
+await test("快速模式仅生成一条简短回复", async () => {
+  const messages = buildMessages(post, settings, "", true);
+  assert.match(messages[0].content, /一条简短/);
+  assert.match(messages[0].content, /不可信素材/);
+  let request;
+  const result = await generateReplies(post, settings, "", undefined, async (_, init) => {
+    request = JSON.parse(init.body).messages;
+    return { ok: true, json: async () => ({ choices: [{ message: { content: JSON.stringify({ replies: [{ style: "自然回应", text: "这细节确实挺有意思，之前还真没想到。", translation: "" }] }) } }] }) };
+  }, true);
+  assert.equal(request.length, 2);
+  assert.equal(result.length, 1);
+  assert.equal(result[0].style, "自然回应");
+});
+
 await test("主帖背景单独验证、限制长度与层级，并参与评论缓存标识", () => {
   const reply = normalizePost({ ...post, text: "来了", rootPost: { ...post, text: "主帖".repeat(10000), rootPost: post } });
   assert.equal(reply.isReply, true);
@@ -256,23 +270,37 @@ await test("后台仅接受 X 内容脚本的帖子消息，拒绝外部与无�
   const events = {};
   const writes = [];
   const opens = [];
+  const broadcasts = [];
+  let selection = 0;
   const context = {
-    normalizePost, console,
+    normalizePost, console, crypto: { randomUUID: () => `selection-${++selection}` },
     chrome: {
       runtime: { id: "self", onMessage: { addListener: listener => { events.message = listener; } } },
       storage: {
         local: { setAccessLevel: async () => {} },
-        session: { set: async value => { writes.push(value); }, remove: async () => {} }
+        session: { get: async () => ({}), set: async value => { writes.push(value); }, remove: async () => {} },
+        onChanged: { addListener: listener => { events.changed = listener; } }
       },
       sidePanel: { setPanelBehavior: async () => {}, open: async value => { opens.push(value); } },
-      tabs: { onRemoved: { addListener() {} }, onUpdated: { addListener() {} } }
+      tabs: { query: async () => [{ id: 9 }], sendMessage: async (id, message) => { broadcasts.push({ id, message }); }, onRemoved: { addListener() {} }, onUpdated: { addListener() {} } }
     }
   };
-  vm.runInNewContext(fs.readFileSync(new URL("../extension/background.js", import.meta.url), "utf8").replace(/^import .*\n/, ""), context);
+  vm.runInNewContext(fs.readFileSync(new URL("../extension/background.js", import.meta.url), "utf8").replace(/^import .*\r?\n/gm, ""), context);
   const sender = { id: "self", url: "https://x.com/home", tab: { id: 9 } };
+  let reply;
+  events.message({ type: "POST_SELECTED", post }, sender, result => { reply = result; });
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(reply.ignored, true, "默认关闭时后台不打开侧边栏或保存帖子");
+  assert.equal(writes.length, 0);
+  assert.equal(opens.length, 0);
+  events.changed({ assistantEnabled: { newValue: true } }, "session");
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(broadcasts[0].message.enabled, true);
+  events.message({ type: "GET_ASSISTANT_STATE" }, sender, result => { reply = result; });
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(reply.enabled, true);
   assert.equal(events.message({ type: "POST_SELECTED", post }, { ...sender, url: "https://evil.test" }, () => {}), undefined);
   assert.equal(opens.length, 0);
-  let reply;
   events.message({ type: "POST_SELECTED", post: { ...post, text: "" } }, sender, result => { reply = result; });
   assert.equal(reply.ok, false);
   assert.equal(opens.length, 0);
@@ -285,6 +313,43 @@ await test("后台仅接受 X 内容脚本的帖子消息，拒绝外部与无�
   await new Promise(resolve => setTimeout(resolve, 0));
   assert.equal(opens.length, 1, "后台补读不得在无用户手势时尝试打开侧边栏");
   assert.equal(writes[1]["post:9"].url, "");
+  events.message({ type: "POST_SELECTED", post, openPanel: false }, sender, () => {});
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.notEqual(writes[0]["post:9"].selectionId, writes[2]["post:9"].selectionId, "同帖重新选择也会触发 Chrome 存储变更");
+  events.changed({ assistantEnabled: { newValue: false } }, "session");
+  events.message({ type: "POST_SELECTED", post }, sender, result => { reply = result; });
+  assert.equal(reply.ignored, true);
+  assert.equal(writes.length, 3);
+  assert.equal(opens.length, 1);
+  events.message({ type: "GET_ASSISTANT_STATE" }, sender, result => { reply = result; });
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(reply.enabled, false);
+});
+
+await test("后台休眠后首个点击等待会话开关恢复，保留已开启状态", async () => {
+  let resolveState;
+  let listener;
+  let opened = 0;
+  const writes = [];
+  const context = { normalizePost, console, crypto: { randomUUID: () => "cold-selection" }, chrome: {
+    runtime: { id: "self", onMessage: { addListener: callback => { listener = callback; } } },
+    storage: {
+      local: { setAccessLevel: async () => {} },
+      session: { get: () => new Promise(resolve => { resolveState = resolve; }), set: async value => { writes.push(value); } },
+      onChanged: { addListener() {} }
+    },
+    sidePanel: { setPanelBehavior: async () => {}, open: async () => { opened++; } },
+    tabs: { onRemoved: { addListener() {} }, onUpdated: { addListener() {} } }
+  } };
+  vm.runInNewContext(fs.readFileSync(new URL("../extension/background.js", import.meta.url), "utf8").replace(/^import .*\r?\n/gm, ""), context);
+  let reply;
+  assert.equal(listener({ type: "POST_SELECTED", post }, { id: "self", url: "https://x.com/home", tab: { id: 7 } }, result => { reply = result; }), true);
+  assert.equal(opened, 0);
+  resolveState({ assistantEnabled: true });
+  await new Promise(resolve => setTimeout(resolve, 0));
+  assert.equal(reply.ok, true);
+  assert.equal(writes[0]["post:7"].text, post.text);
+  assert.equal(opened, 1);
 });
 
 await test("Manifest 资源齐全，API 主机权限在保存配置时按需申请", () => {
@@ -296,5 +361,7 @@ await test("Manifest 资源齐全，API 主机权限在保存配置时按需申�
     assert(fs.existsSync(new URL(`../extension/${path}`, import.meta.url)), path);
   }
 });
+
+
 
 console.log(`\n${passed} 项测试通过。`);

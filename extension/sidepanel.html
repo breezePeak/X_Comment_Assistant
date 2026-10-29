@@ -5,19 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>X 评论助手</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="posts.css">
   <script type="module" src="sidepanel.js"></script>
+  <script type="module" src="friendly-panel.js"></script>
+  <script type="module" src="posts-panel.js"></script>
+  <script type="module" src="following-panel.js"></script>
+  <script type="module" src="analytics-panel.js"></script>
 </head>
 <body class="panel">
   <header class="topbar">
-    <div class="brand"><span class="brand-icon" aria-hidden="true">↗</span><div><strong>X 评论助手</strong><span class="eyebrow">让每一次回复，都有内容</span></div></div>
-    <button id="settings" class="icon-button" aria-label="打开 API 配置">⚙</button>
+    <span class="brand-icon" aria-hidden="true">↗</span>
+    <nav class="panel-views" aria-label="功能切换"><button id="view-comments" type="button" aria-pressed="true" aria-controls="comments-view">评论助手</button><button id="view-friendly" type="button" aria-pressed="false" aria-controls="friendly-view">交友评论</button><button id="view-posts" type="button" aria-pressed="false" aria-controls="posts-view">热点帖子</button><button id="view-following" type="button" aria-pressed="false" aria-controls="following-view">未回关</button><button id="view-analytics" type="button" aria-pressed="false" aria-controls="analytics-view">我的数据</button></nav>
+    <button id="settings" class="icon-button" aria-label="打开设置">⚙</button>
   </header>
   <main>
-    <div class="section-label"><span class="status-dot"></span><span id="connection">等待选择帖子</span><button id="read-current" class="text-button" aria-label="读取当前回复帖子">重读帖子 ↻</button></div>
+    <div id="comments-view">
+    <div class="assistant-control"><div><strong id="assistant-state">助手已关闭</strong><small>开启后，点击 X 回复按钮生成</small></div><button id="assistant-toggle" class="secondary" type="button" aria-pressed="false" disabled>开启助手</button></div>
+    <div class="section-label"><span class="status-dot"></span><span id="connection">未读取帖子</span><button id="read-current" class="text-button" aria-label="读取当前回复帖子" disabled>重读帖子 ↻</button></div>
     <section id="empty" class="empty-state">
       <span class="empty-icon" aria-hidden="true">↗</span>
-      <h1>好评论，从读懂开始。</h1>
-      <p>在 X 点击一条帖子的<strong>回复按钮</strong>，<br>这里会为你准备三个不同角度的回复。<br>弹窗已打开时，也可点上方按钮重新读取。</p>
+      <h1 id="empty-title">先开启，再开始。</h1>
+      <p id="empty-hint">点击上方「开启助手」，<br>再到 X 点击要回复的帖子。</p>
       <ol class="steps"><li>选择一条帖子</li><li>挑选或修改评论</li><li>复制，再粘贴发布</li></ol>
     </section>
     <section id="source" hidden>
@@ -33,13 +41,89 @@
         <label class="instruction-label" for="instruction">这次想怎么回复</label>
         <textarea id="instruction" class="instruction" maxlength="800" rows="2" placeholder="例如：简洁一点，补充一个不同的思考角度"></textarea>
       </details>
-      <button id="generate" class="primary wide">生成三条评论 <span aria-hidden="true">↗</span></button>
+      <button id="generate" class="primary wide">生成一条回复并复制 <span aria-hidden="true">↗</span></button>
     </section>
-    <div id="setup" class="setup-banner" hidden><strong>先连接你的 AI 服务</strong><p>填写 API 地址、模型名和 Key，之后点击回复即可自动生成。</p><button id="configure" class="secondary">前往 API 配置 ↗</button></div>
+    <div id="setup" class="setup-banner" hidden><strong>先连接你的 AI 服务</strong><p>填写 API 地址、模型名和 Key，开启助手后点击回复即可生成。</p><button id="configure" class="secondary">前往 API 配置 ↗</button></div>
     <div id="status" class="status-message" role="status" aria-live="polite"></div>
     <details id="model-response" class="response-details" hidden><summary>查看模型原始回答</summary><pre id="raw-response"></pre></details>
     <section id="results" hidden><div class="section-heading"><h2>给对话一点新意</h2><span class="muted">可直接编辑</span></div><div id="reply-list"></div></section>
+    </div>
+    <section id="friendly-view" hidden>
+      <div class="section-heading">
+        <h2>交友与破冰评论</h2>
+        <div class="friendly-actions">
+          <button id="friendly-clear" class="text-button" type="button">清空</button>
+          <button id="friendly-generate" class="secondary" type="button">获取新评论 ↻</button>
+        </div>
+      </div>
+      <p class="field-hint">提前储备，随时取用。点击任意评论自动复制并消费；含蓄借诗抒怀，真诚同频共鸣，不显山露水结识同好。</p>
+      <div id="friendly-status" class="status-message" role="status" aria-live="polite"></div>
+      <div id="friendly-list" class="friendly-list"></div>
+      <div id="friendly-empty" class="friendly-empty-hint" hidden>
+        <p>暂无待消费评论，点击上方「获取新评论」开始储备。</p>
+      </div>
+    </section>
+    <section id="posts-view" hidden>
+      <div class="section-heading"><h2>热点帖子</h2><button id="posts-configure" class="text-button" type="button">连接设置</button><button id="posts-refresh" class="secondary" type="button">刷新</button></div>
+      <label class="posts-filter"><input id="posts-show-consumed" type="checkbox">显示已消费</label>
+      <p class="field-hint">选择图文后自行发布，再点击「我已发布」；已消费帖子默认隐藏。</p>
+      <div id="posts-status" class="status-message" role="status" aria-live="polite"></div>
+      <div id="posts-list"></div>
+      <button id="posts-more" class="secondary wide" type="button" hidden>加载更多</button>
+    </section>
+    <section id="following-view" hidden>
+      <div class="section-heading"><h2>未回关我的账号</h2><button id="following-open" class="text-button" type="button">打开我的关注</button></div>
+      <p class="field-hint">在自己的「正在关注」页面读取。仅检查网页当前已加载的账号；滚动时自动识别并更新，不代表完整名单。缺少「关注了你」标记的账号会列在下面，请核对后操作。</p>
+      <div id="following-status" class="status-message" role="status" aria-live="polite"></div>
+      <div id="following-list"></div>
+      <p class="field-hint">点击「取消关注」后，请在 X 原生弹窗中核对并确认；列表变化后自动刷新。滚动及列表变化会持续自动识别。</p>
+    </section>
+    <section id="analytics-view" hidden>
+      <div class="section-heading"><h2>我的帖子数据</h2><button id="analytics-open" class="text-button" type="button">打开我的主页</button></div>
+      <div id="analytics-status" class="status-message" role="status" aria-live="polite"></div>
+      <h2 id="analytics-owner">尚未采集</h2>
+      <article id="analytics-impressions-card" class="analytics-impressions-card" aria-label="最新原创曝光量" hidden>
+        <h2>原创曝光量 <small>近 90 天</small></h2>
+        <strong id="analytics-impressions-value"></strong>
+        <span id="analytics-impressions-date"></span>
+      </article>
+      <p id="analytics-impressions-empty" class="field-hint">暂无原创曝光记录。</p>
+      <details id="analytics-impressions-manual">
+        <summary>手动添加 / 修正</summary>
+        <form id="analytics-impressions-form">
+          <label for="analytics-impressions-input-date">数据日期（北京时间）</label>
+          <input id="analytics-impressions-input-date" type="date" required>
+          <label for="analytics-impressions-input-value">曝光量（整数）</label>
+          <input id="analytics-impressions-input-value" type="number" min="0" max="9007199254740991" step="1" placeholder="例如 26000" required>
+          <button id="analytics-impressions-save" class="secondary" type="submit">保存</button>
+        </form>
+      </details>
+      <details id="analytics-impressions-history" hidden>
+        <summary>曝光历史</summary>
+        <ul id="analytics-impressions"></ul>
+      </details>
+      <nav class="panel-views analytics-tabs" aria-label="我的数据页面">
+        <button id="analytics-tab-posts" type="button" aria-pressed="true" aria-controls="analytics-posts-page">帖子数据</button>
+        <button id="analytics-tab-analysis" type="button" aria-pressed="false" aria-controls="analytics-analysis-page">数据分析</button>
+      </nav>
+      <section id="analytics-posts-page" aria-label="帖子数据">
+      <div class="hot-post-actions"><button id="analytics-csv" class="secondary" type="button" disabled>导出 CSV</button><button id="analytics-json" class="secondary" type="button" disabled>导出 JSON</button><button id="analytics-clear" class="text-button" type="button" disabled>清除本机缓存</button></div>
+
+      <label class="compose-controls" for="analytics-sort">帖子排序<select id="analytics-sort"><option value="time">发布时间优先</option><option value="views">浏览量优先</option><option value="rate">互动比优先</option></select></label>
+      <div id="analytics-list"></div>
+      </section>
+      <section id="analytics-analysis-page" aria-label="数据分析" hidden>
+        <h2>数据概览</h2>
+        <p id="analytics-summary" class="field-hint"></p>
+        <div id="analytics-metrics" class="analytics-metrics"></div>
+        <h2>发帖时段与平均浏览</h2>
+        <p class="field-hint">按浏览器本地时区分组，仅统计有浏览数的帖子。样本不足 3 条会标注；结果仅供观察，不代表最佳发帖时间。</p>
+        <p id="analytics-hours-empty" class="field-hint">暂无浏览数据，返回主页滚动采集后查看。</p>
+        <ul id="analytics-hours" class="analytics-hourly"></ul>
+        <p class="field-hint">分析仅使用本机采集的页面快照，不读取服务器。缺失指标不计入平均值；同一帖只保留最新快照，无法据此计算历史增长。</p>
+      </section>
+    </section>
   </main>
-  <footer>v1.0.5 · 帖子文字仅发送至所选 AI 服务，由你复制粘贴发布。</footer>
+  <footer>v1.1.0 · 评论按需开启，热点由你挑选，始终自行发布。</footer>
 </body>
 </html>

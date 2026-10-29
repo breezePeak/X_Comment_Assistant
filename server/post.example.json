@@ -1,0 +1,11 @@
+{
+  "externalId": "2026-10-19-ai-01",
+  "title": "热点候选标题",
+  "text": "替换成你已核实的热点正文。",
+  "images": [
+    { "url": "https://your-image-host.example/hotspot.png", "alt": "替换成图片说明" }
+  ],
+  "sources": [
+    { "title": "事实来源", "url": "https://your-source.example/news" }
+  ]
+}

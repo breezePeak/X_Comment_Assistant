@@ -8,6 +8,8 @@ let post;
 let operation = 0;
 let loading = 0;
 let controller;
+let enabled = false;
+let stateKnown = false;
 
 function status(message, error = false) {
   $("status").textContent = message;
@@ -18,19 +20,40 @@ function cancel() {
   operation++;
   controller?.abort();
   controller = null;
-  $("generate").disabled = !ready();
-  $("generate").textContent = "重新生成 ↗";
+  $("generate").disabled = !enabled || !ready();
+  $("generate").textContent = "重新生成并复制 ↗";
   $("model-response").hidden = true;
   $("model-response").open = false;
   $("raw-response").textContent = "";
 }
 
 function draftKey(selected, config) {
-  return JSON.stringify(["replies-v2", postKey(selected), config.providerId, config.baseUrl, config.model, config.language, config.preferences]);
+  return JSON.stringify(["replies-v3", postKey(selected), config.providerId, config.baseUrl, config.model, config.language, config.preferences]);
 }
 
 function ready() {
   try { validateSettings(settings); return true; } catch { return false; }
+}
+
+function setEnabled(value) {
+  if (stateKnown && enabled === value) return;
+  stateKnown = true;
+  enabled = value;
+  loading++;
+  cancel();
+  post = null;
+  $("source").hidden = true;
+  $("results").hidden = true;
+  $("empty").hidden = false;
+  $("assistant-toggle").textContent = enabled ? "关闭助手" : "开启助手";
+  $("assistant-toggle").setAttribute("aria-pressed", String(enabled));
+  $("assistant-state").textContent = enabled ? "助手已开启" : "助手已关闭";
+  $("read-current").disabled = !enabled;
+  $("connection").textContent = enabled ? "等待选择帖子" : "未读取帖子";
+  document.body.classList.toggle("assistant-off", !enabled);
+  $("empty-title").textContent = enabled ? "好评论，从读懂开始。" : "先开启，再开始。";
+  $("empty-hint").textContent = enabled ? "在 X 点击帖子的回复按钮，生成一条并自动复制。\n回复框已打开时，也可点击「重读帖子」。" : "点击上方「开启助手」，再到 X 点击要回复的帖子。";
+  status(enabled ? "已开启，等待你选择帖子。" : "已关闭，停止读帖和生成评论。");
 }
 
 function resizeReply(field) {
@@ -90,8 +113,17 @@ function renderReplies(replies) {
   });
 }
 
+async function copyReply(text) {
+  try {
+    await navigator.clipboard.writeText(text.trim());
+    return "已生成一条回复并复制到剪切板，回到 X 粘贴即可。";
+  } catch {
+    return "已生成一条回复，但自动复制失败；请点击「复制评论」。";
+  }
+}
+
 async function generate() {
-  if (!post || !ready()) return;
+  if (!enabled || !post || !ready()) return;
   cancel();
   const current = operation;
   const selected = post;
@@ -104,20 +136,20 @@ async function generate() {
   let timedOut = false;
   const timeout = setTimeout(() => { timedOut = true; requestController.abort(); }, 60000);
   $("generate").disabled = true;
-  $("generate").textContent = "正在读帖、组织评论…";
+  $("generate").textContent = "正在生成并复制…";
   $("results").hidden = true;
-  status("正在准备三个不同角度的回复…");
+  status("正在生成一条简短回复…");
   try {
     const endpoint = apiEndpoint(config.baseUrl);
     const allowed = await chrome.permissions.contains({ origins: [`${endpoint.origin}/*`] });
     if (!allowed) throw new Error("尚未授权 API 域名，请前往配置页重新保存并授权。");
     if (current !== operation) return;
-    const replies = await generateReplies(selected, config, instruction, signal);
+    const replies = await generateReplies(selected, config, instruction, signal, fetch, true);
     if (current !== operation) return;
     await chrome.storage.session.set({ [`draft:${selectedTab}`]: { key: draftKey(selected, config), replies } });
     if (current !== operation) return;
     renderReplies(replies);
-    status("已生成，可编辑后复制。");
+    status(await copyReply(replies[0].text));
   } catch (error) {
     if (current !== operation) return;
     status(timedOut ? "生成超过 60 秒，请稍后重试或选择更快的模型。" : error.message, true);
@@ -129,13 +161,14 @@ async function generate() {
     clearTimeout(timeout);
     if (current === operation) {
       controller = null;
-      $("generate").disabled = false;
-      $("generate").textContent = "重新生成 ↗";
+      $("generate").disabled = !enabled || !ready();
+      $("generate").textContent = "重新生成并复制 ↗";
     }
   }
 }
 
 async function loadSelection(recover = false, manual = false) {
+  if (!enabled) return;
   const revision = ++loading;
   const [tab] = await chrome.tabs.query({ active: true, windowId });
   const id = tab?.id;
@@ -192,8 +225,11 @@ async function loadSelection(recover = false, manual = false) {
   $("post-link").href = post.url;
   $("post-link").hidden = !post.url;
   const draft = state[`draft:${id}`];
-  if (draft?.key === draftKey(post, settings)) renderReplies(draft.replies);
-  else if (ready()) await generate();
+  if (draft?.key === draftKey(post, settings)) {
+    renderReplies(draft.replies);
+    status(await copyReply(draft.replies[0].text));
+  }
+  else if (ready()) await generate(true);
 }
 
 async function loadSettings() {
@@ -202,8 +238,21 @@ async function loadSettings() {
   settings = activeConfig(state);
   $("language").value = settings.language;
   $("setup").hidden = ready();
-  $("generate").disabled = !ready();
+  $("generate").disabled = !enabled || !ready();
 }
+
+$("assistant-toggle").addEventListener("click", async () => {
+  const previous = enabled;
+  $("assistant-toggle").disabled = true;
+  if (previous) setEnabled(false);
+  try {
+    await chrome.storage.session.set({ assistantEnabled: !previous });
+    setEnabled(!previous);
+  } catch {
+    setEnabled(previous);
+    status("切换助手失败，请重试。", true);
+  } finally { $("assistant-toggle").disabled = false; }
+});
 
 $("settings").addEventListener("click", () => chrome.runtime.openOptionsPage());
 $("configure").addEventListener("click", () => chrome.runtime.openOptionsPage());
@@ -217,9 +266,10 @@ $("read-current").addEventListener("click", async () => {
   $("read-current").disabled = true;
   try { await loadSelection(true, true); }
   catch (error) { status(error.message, true); }
-  finally { $("read-current").disabled = false; }
+  finally { $("read-current").disabled = !enabled; }
 });
 chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === "session" && changes.assistantEnabled) setEnabled(changes.assistantEnabled.newValue === true);
   if (area === "session" && Object.keys(changes).some(key => key.startsWith("post:"))) {
     const removed = changes[`post:${tabId}`] && !changes[`post:${tabId}`].newValue;
     loadSelection(Boolean(removed)).catch(error => status(error.message, true));
@@ -228,7 +278,7 @@ chrome.storage.onChanged.addListener((changes, area) => {
     cancel();
     $("results").hidden = true;
     loadSettings()
-      .then(() => status(ready() ? "AI 配置已更新，点击重新生成即可应用。" : "请先在设置中填写并保存 API 配置。"))
+      .then(() => status(ready() ? (enabled ? "AI 配置已更新，点击重新生成即可应用。" : "AI 配置已保存，开启助手后即可使用。") : "请先在设置中填写并保存 API 配置。"))
       .catch(error => status(error.message, true));
   }
 });
@@ -243,5 +293,8 @@ window.addEventListener("resize", () => {
 try {
   windowId = (await chrome.windows.getCurrent()).id;
   await loadSettings();
-  await loadSelection(true);
+  const state = await chrome.storage.session.get("assistantEnabled");
+  if (!stateKnown) setEnabled(state.assistantEnabled === true);
+  $("assistant-toggle").disabled = false;
+  if (enabled) await loadSelection(true);
 } catch (error) { status(`初始化失败：${error.message}`, true); }
